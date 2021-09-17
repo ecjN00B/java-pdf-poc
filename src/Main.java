@@ -12,8 +12,8 @@ import org.apache.pdfbox.rendering.PDFRenderer;
 
 public class Main {
 	
-	private static final int HEIGHT = 300;
-	private static final int WIDTH = 200;
+	private static final float HEIGHT = 300;
+	private static final float WIDTH = 200;
 
 	private static final int DPI = 35;
 
@@ -34,9 +34,7 @@ public class Main {
 		  var bim = pdfRenderer.renderImageWithDPI(i, DPI, ImageType.RGB);
 		  var pdImage = JPEGFactory.createFromImage(pdDocument, bim);
 		  var contentStream = new PDPageContentStream(pdDocument, page);
-		  float newHeight = HEIGHT;
-		  float newWidth = WIDTH;
-		  contentStream.drawImage(pdImage, 0, 0, newWidth, newHeight);
+		  contentStream.drawImage(pdImage, 0, 0, WIDTH, HEIGHT);
 		  contentStream.close();
 		  var rectangle = new PDRectangle(WIDTH, HEIGHT);
 		  page.setCropBox(rectangle);
